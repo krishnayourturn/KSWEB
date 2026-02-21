@@ -14,7 +14,7 @@
     overflow-x: hidden;
   }
 
-  /* ===== Neon Glow Background ===== */
+  /* Neon Glow Background */
   .glow {
     position: fixed;
     width: 300px;
@@ -96,6 +96,24 @@
     background: rgba(0,255,255,0.1);
     border: 1px solid rgba(0,255,255,0.3);
   }
+
+  .fun-btn {
+    display: block;
+    margin: 40px auto;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(90deg,#00ffff,#ff00ff);
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .fun-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #ff00ff;
+  }
 </style>
 </head>
 
@@ -114,17 +132,16 @@
   <h2>🧠 Who I Am</h2>
   <p>
     A disciplined student preparing for major academic milestones, committed to building a strong
-    future through focus, consistency, and clarity of purpose. I value deep work, efficiency,
-    and staying aligned with long-term goals.
+    future through focus, consistency, and clarity of purpose.
   </p>
 </section>
 
 <section>
   <h2>🎯 Current Mission</h2>
   <ul>
-    <li>Excel in board examinations with strong conceptual clarity</li>
-    <li>Secure admission in a top technical institute (CSE focus)</li>
-    <li>Develop discipline, focus, and high-performance habits</li>
+    <li>Excel in board examinations</li>
+    <li>Secure admission in a top technical institute (CSE)</li>
+    <li>Build discipline and high-performance habits</li>
   </ul>
 </section>
 
@@ -141,7 +158,6 @@
   <h2>🚀 Vision</h2>
   <p>
     To build a life defined by excellence, intellectual growth, and meaningful impact.
-    Every decision I make is aligned with long-term success and personal mastery.
   </p>
 </section>
 
@@ -155,11 +171,22 @@
   </ul>
 </section>
 
+<!-- 🎮 Fun Zone Button -->
+<button class="fun-btn" onclick="window.location.href='fun.html'">
+  🎮 Enter Fun Zone
+</button>
+
 <footer>
   © 2026 Krishna Sharma | Digital Identity
 </footer>
 
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <script>
+  // Typing Animation
   const words = [
     "Future Engineer",
     "Focused Learner",
@@ -167,56 +194,44 @@
     "Building My Path"
   ];
 
-  let i = 0;
-  let j = 0;
-  let currentWord = "";
-  let isDeleting = false;
+  let i = 0, j = 0, currentWord = "", isDeleting = false;
 
   function type() {
     currentWord = words[i];
     const typing = document.getElementById("typing");
 
-    if (isDeleting) {
-      typing.textContent = currentWord.substring(0, j--);
+    typing.textContent = currentWord.substring(0, j);
+
+    if (!isDeleting) {
+      j++;
+      if (j > currentWord.length) {
+        isDeleting = true;
+        setTimeout(type, 1000);
+        return;
+      }
     } else {
-      typing.textContent = currentWord.substring(0, j++);
-    }
-
-    if (!isDeleting && j === currentWord.length + 1) {
-      isDeleting = true;
-      setTimeout(type, 1000);
-      return;
-    }
-
-    if (isDeleting && j === 0) {
-      isDeleting = false;
-      i = (i + 1) % words.length;
+      j--;
+      if (j === 0) {
+        isDeleting = false;
+        i = (i + 1) % words.length;
+      }
     }
 
     setTimeout(type, isDeleting ? 50 : 100);
   }
 
   type();
-</script>
-<script src="extras.js"></script>
-  <script src="interactive.js"></script>
-  <button onclick="window.location.href='fun.html'">
-  🎮 Enter Fun Zone
-</button>
-  <!-- Background Music -->
-<audio id="bgMusic" loop>
-  <source src="sound.mp3" type="audio/mpeg">
-</audio>
 
-<script>
+  // Background Music (starts on first click)
   const music = document.getElementById("bgMusic");
 
   function startMusic() {
-    music.play().catch(()=>{});
+    music.play().catch(() => {});
     document.removeEventListener("click", startMusic);
   }
 
   document.addEventListener("click", startMusic);
 </script>
+
 </body>
 </html>
