@@ -94,6 +94,21 @@
     gallery.appendChild(card);
   });
 </script>
+<script>
+const jokes = [
+  "Legend spotted 😎",
+  "Too cool for normal rules 🔥",
+  "Certified superstar 😂",
+  "Warning: Extreme swag detected ⚠️",
+  "Smile level: Dangerous ❤️"
+];
 
+document.querySelectorAll("img").forEach(img => {
+  img.addEventListener("click", () => {
+    const random = jokes[Math.floor(Math.random() * jokes.length)];
+    alert(random);
+  });
+});
+</script>
 </body>
 </html>
