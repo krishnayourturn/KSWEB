@@ -6,6 +6,8 @@
 <title>Krishna Sharma | Digital Identity</title>
 
 <style>
+  html { scroll-behavior: smooth; }
+
   body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -14,12 +16,12 @@
     overflow-x: hidden;
   }
 
-  /* ===== Neon Glow Background ===== */
+  /* Neon floating glow */
   .glow {
     position: fixed;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(0,255,255,0.2), transparent);
+    background: radial-gradient(circle, rgba(0,255,255,0.15), transparent);
     border-radius: 50%;
     animation: float 8s infinite ease-in-out;
     z-index: -1;
@@ -68,7 +70,7 @@
   }
 
   section:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.01);
     box-shadow: 0 0 35px rgba(255,0,255,0.3);
   }
 
@@ -78,15 +80,7 @@
     padding-bottom: 10px;
   }
 
-  ul {
-    line-height: 1.8;
-  }
-
-  footer {
-    text-align: center;
-    padding: 40px;
-    color: #888;
-  }
+  ul { line-height: 1.8; }
 
   .tag {
     display: inline-block;
@@ -95,6 +89,21 @@
     border-radius: 20px;
     background: rgba(0,255,255,0.1);
     border: 1px solid rgba(0,255,255,0.3);
+  }
+
+  .profile-pic {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid #00ffff;
+    box-shadow: 0 0 25px rgba(0,255,255,0.6);
+    object-fit: cover;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px;
+    color: #888;
   }
 </style>
 </head>
@@ -109,6 +118,12 @@
   <p>Focused. Driven. Building a future.</p>
   <div class="typing" id="typing"></div>
 </header>
+
+<!-- Profile -->
+<section style="text-align:center;">
+  <img src="https://via.placeholder.com/140" alt="Profile" class="profile-pic">
+  <p style="margin-top:10px;color:#ccc;">Surat, India</p>
+</section>
 
 <section>
   <h2>🧠 Who I Am</h2>
@@ -146,13 +161,16 @@
 </section>
 
 <section>
-  <h2>📌 Personal Principles</h2>
-  <ul>
-    <li>Clarity over confusion</li>
-    <li>Consistency over motivation</li>
-    <li>Depth over distraction</li>
-    <li>Action over overthinking</li>
-  </ul>
+  <h2>💬 Guiding Thought</h2>
+  <p style="font-style:italic; color:#ccc;">
+    "Discipline creates freedom. Focus creates results."
+  </p>
+</section>
+
+<section>
+  <h2>🌐 Connect</h2>
+  <p>Email: krishna@example.com</p>
+  <p>GitHub: github.com/krishnayourturn</p>
 </section>
 
 <footer>
@@ -167,10 +185,7 @@
     "Building My Path"
   ];
 
-  let i = 0;
-  let j = 0;
-  let currentWord = "";
-  let isDeleting = false;
+  let i = 0, j = 0, currentWord = "", isDeleting = false;
 
   function type() {
     currentWord = words[i];
