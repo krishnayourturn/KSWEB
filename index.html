@@ -204,16 +204,19 @@
   🎮 Enter Fun Zone
 </button>
   <!-- Background Music -->
-<audio id="bgMusic" autoplay loop>
+<audio id="bgMusic" loop>
   <source src="sound.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-  // Ensures music starts after user interaction (for mobile browsers)
-  document.addEventListener("click", () => {
-    const music = document.getElementById("bgMusic");
+  const music = document.getElementById("bgMusic");
+
+  function startMusic() {
     music.play().catch(()=>{});
-  }, { once: true });
+    document.removeEventListener("click", startMusic);
+  }
+
+  document.addEventListener("click", startMusic);
 </script>
 </body>
 </html>
