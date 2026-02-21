@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krishna Sharma | Digital Identity</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #0a0014, #000010 70%);
+    color: white;
+    overflow-x: hidden;
+  }
+
+  /* ===== Neon Glow Background ===== */
+  .glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0,255,255,0.2), transparent);
+    border-radius: 50%;
+    animation: float 8s infinite ease-in-out;
+    z-index: -1;
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-60px); }
+  }
+
+  header {
+    text-align: center;
+    padding: 60px 20px 20px;
+  }
+
+  header h1 {
+    font-size: 3em;
+    background: linear-gradient(90deg,#00ffff,#ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+
+  header p {
+    color: #ccc;
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
+
+  .typing {
+    color: #00ffff;
+    font-weight: bold;
+    font-size: 1.4em;
+    margin-top: 10px;
+  }
+
+  section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,255,255,0.2);
+    box-shadow: 0 0 25px rgba(0,255,255,0.1);
+    transition: 0.3s;
+  }
+
+  section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px rgba(255,0,255,0.3);
+  }
+
+  h2 {
+    color: #00ffff;
+    border-bottom: 2px solid rgba(0,255,255,0.3);
+    padding-bottom: 10px;
+  }
+
+  ul {
+    line-height: 1.8;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 6px;
+    border-radius: 20px;
+    background: rgba(0,255,255,0.1);
+    border: 1px solid rgba(0,255,255,0.3);
+  }
+</style>
+</head>
+
+<body>
+
+<div class="glow" style="top:10%; left:5%;"></div>
+<div class="glow" style="bottom:10%; right:5%; animation-delay:2s;"></div>
+
+<header>
+  <h1>Krishna Sharma</h1>
+  <p>Focused. Driven. Building a future.</p>
+  <div class="typing" id="typing"></div>
+</header>
+
+<section>
+  <h2>🧠 Who I Am</h2>
+  <p>
+    A disciplined student preparing for major academic milestones, committed to building a strong
+    future through focus, consistency, and clarity of purpose. I value deep work, efficiency,
+    and staying aligned with long-term goals.
+  </p>
+</section>
+
+<section>
+  <h2>🎯 Current Mission</h2>
+  <ul>
+    <li>Excel in board examinations with strong conceptual clarity</li>
+    <li>Secure admission in a top technical institute (CSE focus)</li>
+    <li>Develop discipline, focus, and high-performance habits</li>
+  </ul>
+</section>
+
+<section>
+  <h2>⚡ Strengths</h2>
+  <div class="tag">Focused Mindset</div>
+  <div class="tag">Strategic Thinking</div>
+  <div class="tag">Resilience</div>
+  <div class="tag">Self-Improvement</div>
+  <div class="tag">Goal-Oriented</div>
+</section>
+
+<section>
+  <h2>🚀 Vision</h2>
+  <p>
+    To build a life defined by excellence, intellectual growth, and meaningful impact.
+    Every decision I make is aligned with long-term success and personal mastery.
+  </p>
+</section>
+
+<section>
+  <h2>📌 Personal Principles</h2>
+  <ul>
+    <li>Clarity over confusion</li>
+    <li>Consistency over motivation</li>
+    <li>Depth over distraction</li>
+    <li>Action over overthinking</li>
+  </ul>
+</section>
+
+<footer>
+  © 2026 Krishna Sharma | Digital Identity
+</footer>
+
+<script>
+  const words = [
+    "Future Engineer",
+    "Focused Learner",
+    "Relentless Improver",
+    "Building My Path"
+  ];
+
+  let i = 0;
+  let j = 0;
+  let currentWord = "";
+  let isDeleting = false;
+
+  function type() {
+    currentWord = words[i];
+    const typing = document.getElementById("typing");
+
+    if (isDeleting) {
+      typing.textContent = currentWord.substring(0, j--);
+    } else {
+      typing.textContent = currentWord.substring(0, j++);
+    }
+
+    if (!isDeleting && j === currentWord.length + 1) {
+      isDeleting = true;
+      setTimeout(type, 1000);
+      return;
+    }
+
+    if (isDeleting && j === 0) {
+      isDeleting = false;
+      i = (i + 1) % words.length;
+    }
+
+    setTimeout(type, isDeleting ? 50 : 100);
+  }
+
+  type();
+</script>
+
+</body>
+</html>
